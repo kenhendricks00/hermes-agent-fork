@@ -1,0 +1,23 @@
+name: input-cards
+title: Input Cards
+repo: https://github.com/kenhendricks00/hermes-input-cards
+sha: c61c37bfba3589cec21eb2b51f7efa42a1b59e70
+description: "Secret request cards for API keys and tokens: the agent asks through Hermes's native masked secret prompt instead of chat, and inline cards (::preview) show a Grok-style Secrets card while waiting, then a collapsed 'Saved' or 'Skipped' pill. Portable Agent Plugins v1 package (skills only, one stdlib Python script). Disclosure: the script writes a temporary skill under $HERMES_HOME/skills/input-card-requests whose frontmatter declares the variable in required_environment_variables; the agent then calls skill_view on it, and Hermes core (not this plugin) opens its masked prompt and saves the value with its own secure .env writer. finish removes the temporary skill. The value is stored in plaintext in the profile .env like any other entry: it stays out of chat and model context, but this is not a boundary against code or tools that read .env, and 'never read it back' is a skill instruction to the model, not an enforced guard. The masked prompt appears only where Hermes can show a secret dialog (Desktop, web app, terminal UI); on messaging surfaces such as Discord, Telegram or SMS the user adds the value in Settings or .env instead. The flow depends on Hermes prompting for required_environment_variables on skill_view and was verified once end to end in Hermes Desktop with a dummy value. The script reads the profile .env only to report presence, never prints a value, refuses names that control Hermes, Python or the shell (PATH, HERMES_*, PYTHON*, LD_*, NODE_* and similar), and makes no network calls. Cards have no input fields or prompt buttons; their only frame message is the standard Hermes inline preview size report. No hooks, tools, credential stores of its own, telemetry or background processes."
+maintainer: kenhendricks00
+tier: community
+category: tools
+version: "1.0.0"
+requires_hermes: ">=0.21.6"
+docs_url: https://github.com/kenhendricks00/hermes-input-cards#readme
+image: https://raw.githubusercontent.com/kenhendricks00/hermes-input-cards/c61c37bfba3589cec21eb2b51f7efa42a1b59e70/docs/banner.png
+screenshots:
+- https://raw.githubusercontent.com/kenhendricks00/hermes-input-cards/c61c37bfba3589cec21eb2b51f7efa42a1b59e70/docs/waiting.png
+- https://raw.githubusercontent.com/kenhendricks00/hermes-input-cards/c61c37bfba3589cec21eb2b51f7efa42a1b59e70/docs/saved.png
+- https://raw.githubusercontent.com/kenhendricks00/hermes-input-cards/c61c37bfba3589cec21eb2b51f7efa42a1b59e70/docs/saved-expanded.png
+- https://raw.githubusercontent.com/kenhendricks00/hermes-input-cards/c61c37bfba3589cec21eb2b51f7efa42a1b59e70/docs/skipped.png
+platforms: []
+capabilities:
+  provides_tools: []
+  provides_hooks: []
+  provides_middleware: []
+  requires_env: []
